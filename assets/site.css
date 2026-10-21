@@ -1,0 +1,103 @@
+@font-face{font-family:'Cormorant Garamond';font-style:italic;font-weight:400;font-display:swap;src:url(fonts/CormorantGaramond-400i.woff2) format('woff2');}
+@font-face{font-family:'Cormorant Garamond';font-style:normal;font-weight:400;font-display:swap;src:url(fonts/CormorantGaramond-400.woff2) format('woff2');}
+@font-face{font-family:'Cormorant Garamond';font-style:normal;font-weight:600;font-display:swap;src:url(fonts/CormorantGaramond-600.woff2) format('woff2');}
+@font-face{font-family:'Great Vibes';font-style:normal;font-weight:400;font-display:swap;src:url(fonts/GreatVibes-400.woff2) format('woff2');}
+@font-face{font-family:'Oswald';font-style:normal;font-weight:300;font-display:swap;src:url(fonts/Oswald-300.woff2) format('woff2');}
+@font-face{font-family:'Oswald';font-style:normal;font-weight:400;font-display:swap;src:url(fonts/Oswald-400.woff2) format('woff2');}
+/* skincare.pink v1, palette sampled from the logo */
+:root{
+  --charcoal:#272B2D;   /* logo background (median sample) */
+  --rose:#C5ADAB;       /* rose line art (median of line pixels) */
+  --cream:#EBE5CE;      /* SKINCARE.PINK wordmark (median of type pixels) */
+  --charcoal-2:#30353A; /* derived: raised surface */
+  --line:#4A4F52;       /* derived: hairlines */
+  --cream-dim:#BDB8A6;  /* derived: secondary text */
+  --rose-deep:#A88B88;  /* derived: hover */
+  --serif:'Cormorant Garamond',Georgia,'Times New Roman',serif;
+  --caps:'Oswald','Arial Narrow',sans-serif;
+  --script:'Great Vibes',cursive;
+  --max:68rem;
+}
+*{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+body{margin:0;background:var(--charcoal);color:var(--cream);font:400 1.1875rem/1.65 var(--serif);}
+img{max-width:100%;height:auto;display:block}
+a{color:var(--rose);text-underline-offset:3px;text-decoration-thickness:1px}
+a:hover{color:var(--cream)}
+:focus-visible{outline:2px solid var(--rose);outline-offset:3px}
+.wrap{max-width:var(--max);margin:0 auto;padding:0 1.25rem}
+.skip{position:absolute;left:-999px}.skip:focus{left:1rem;top:1rem;background:var(--cream);color:var(--charcoal);padding:.5rem 1rem;z-index:9}
+
+/* header */
+.site-head{border-bottom:1px solid var(--line)}
+.site-head .wrap{display:flex;align-items:center;justify-content:space-between;gap:1rem;padding-top:.75rem;padding-bottom:.75rem;flex-wrap:wrap}
+.brand{display:flex;align-items:center;gap:.6rem;text-decoration:none;color:var(--cream)}
+.brand img{width:52px;height:52px;border-radius:50%}
+.brand-word{font:300 1.35rem/1 var(--caps);letter-spacing:.06em;text-transform:uppercase}
+.brand-word small{display:block;font:1.05rem/1 var(--script);letter-spacing:0;text-transform:none;color:var(--rose);margin-top:.15rem}
+nav ul{list-style:none;margin:0;padding:0;display:flex;gap:1.1rem;flex-wrap:wrap}
+nav a{font:400 .85rem/1 var(--caps);letter-spacing:.14em;text-transform:uppercase;color:var(--cream);text-decoration:none;padding:.5rem 0;display:inline-block}
+nav a[aria-current=page]{color:var(--rose);border-bottom:1px solid var(--rose)}
+@media (max-width:520px){ .site-head .wrap{justify-content:center} nav ul{justify-content:center;gap:1.2rem} }
+
+/* type */
+h1,h2,h3{font-family:var(--serif);font-weight:600;line-height:1.15;color:var(--cream)}
+h1{font-size:clamp(2.1rem,7vw,3.4rem);margin:.2em 0 .3em}
+h2{font-size:clamp(1.6rem,5vw,2.2rem);margin:1.8em 0 .4em}
+h3{font-size:1.35rem;margin:1.4em 0 .3em}
+.eyebrow{font:400 .8rem/1.2 var(--caps);letter-spacing:.2em;text-transform:uppercase;color:var(--rose);margin:0}
+.script{font-family:var(--script);font-weight:400;color:var(--rose)}
+.lede{font-size:1.3rem;color:var(--cream-dim);font-style:italic}
+hr.rule{border:0;height:1px;background:linear-gradient(90deg,transparent,var(--rose),transparent);margin:3rem auto;max-width:20rem;opacity:.6}
+
+/* hero */
+.hero{text-align:center;padding:1.5rem 0 .5rem}
+#join .panel{margin-top:.5rem}
+.hero .logo{width:100%;max-width:900px;margin:0 auto;aspect-ratio:1584/672;-webkit-mask-image:radial-gradient(ellipse 70% 72% at 50% 50%,#000 62%,transparent 100%);mask-image:radial-gradient(ellipse 70% 72% at 50% 50%,#000 62%,transparent 100%)}
+.hero p.tag{font-size:1.35rem;max-width:34rem;margin:1.25rem auto 1.5rem;color:var(--cream)}
+
+/* buttons + form */
+.btn{display:inline-block;background:var(--rose);color:var(--charcoal);border:0;border-radius:2px;font:400 .9rem/1 var(--caps);letter-spacing:.16em;text-transform:uppercase;padding:1rem 1.4rem;text-decoration:none;cursor:pointer;min-height:48px}
+.btn:hover{background:var(--cream);color:var(--charcoal)}
+.panel{background:var(--charcoal-2);border:1px solid var(--line);padding:2rem 1.25rem;text-align:center;margin:2rem 0}
+
+/* cards */
+.grid{display:grid;gap:1.25rem;grid-template-columns:1fr}
+@media (min-width:700px){.grid{grid-template-columns:repeat(2,1fr)}}
+@media (min-width:1000px){.grid.three{grid-template-columns:repeat(3,1fr)}}
+.card{border:1px solid var(--line);padding:1.4rem 1.25rem;background:var(--charcoal-2);display:flex;flex-direction:column;gap:.4rem}
+.card h3{margin:.2rem 0}
+.card h3 a{color:var(--cream);text-decoration:none}
+.card h3 a:hover{color:var(--rose)}
+.card p{margin:0;color:var(--cream-dim)}
+.card .more{margin-top:auto;padding-top:.6rem;font:400 .8rem/1 var(--caps);letter-spacing:.16em;text-transform:uppercase}
+
+/* posts */
+.post{max-width:42rem;margin:0 auto;padding:2rem 0 1rem}
+.post .meta{color:var(--cream-dim);font-size:1rem}
+.post ol,.post ul{padding-left:1.3rem}
+.post li{margin:.35rem 0}
+.receipt{border-left:2px solid var(--rose);padding:.4rem 0 .4rem 1rem;margin:1.5rem 0;color:var(--cream-dim);font-size:1.05rem}
+.receipt strong{color:var(--cream)}
+table{width:100%;border-collapse:collapse;font-size:1rem;margin:1rem 0}
+th,td{text-align:left;padding:.55rem .4rem;border-bottom:1px solid var(--line);vertical-align:top}
+th{font:400 .75rem/1.2 var(--caps);letter-spacing:.14em;text-transform:uppercase;color:var(--rose)}
+.table-scroll{overflow-x:auto}
+.note{font-size:.95rem;color:var(--cream-dim);border-top:1px solid var(--line);padding-top:1rem;margin-top:2.5rem}
+figure{margin:1.75rem 0}
+figcaption{font-size:.95rem;color:var(--cream-dim);margin-top:.5rem;font-style:italic}
+.label-fig img{max-width:260px;border-radius:50%;margin:0 auto}
+.label-fig{text-align:center}
+blockquote{margin:1.5rem 0;padding:0 0 0 1rem;border-left:2px solid var(--rose);font-style:italic;font-size:1.3rem}
+
+/* shop */
+.cat .soon{font:400 .75rem/1 var(--caps);letter-spacing:.18em;text-transform:uppercase;color:var(--charcoal);background:var(--rose);padding:.35rem .55rem;align-self:flex-start}
+
+/* footer */
+.site-foot{border-top:1px solid var(--line);margin-top:4rem;padding:2rem 0 3rem;text-align:center;color:var(--cream-dim);font-size:.95rem}
+.site-foot img{width:56px;height:56px;border-radius:50%;margin:0 auto .75rem}
+.site-foot p{margin:.35rem 0}
+.site-foot .small{font-size:.85rem}
+@media (prefers-reduced-motion:reduce){*{transition:none!important;animation:none!important}}
+
+@media (max-width:520px){.btn{letter-spacing:.1em;padding:1rem}}
