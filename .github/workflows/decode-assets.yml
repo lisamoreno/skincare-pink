@@ -1,0 +1,31 @@
+name: decode-binary-assets
+# One-time helper: the upload tool could only send text, so images/fonts were
+# committed as base64 under _b64/. This decodes them to their real paths,
+# verifies checksums, and removes the staging folder.
+on:
+  push:
+    paths: ['.github/workflows/decode-assets.yml']
+  workflow_dispatch:
+permissions:
+  contents: write
+jobs:
+  decode:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Decode, verify, commit
+        run: |
+          set -euo pipefail
+          if [ ! -d _b64 ]; then echo "nothing to decode"; exit 0; fi
+          find _b64 -name '*.b64' | while read -r f; do
+            out="${f#_b64/}"; out="${out%.b64}"
+            mkdir -p "$(dirname "$out")"
+            base64 -d "$f" > "$out"
+          done
+          sha256sum -c _b64/binaries.sha256
+          git rm -r -q _b64
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add -A
+          git commit -m "Decode binary assets (images, fonts)"
+          git push
